@@ -1,0 +1,30 @@
+<!-- <h1 style="color:white;text-align:center;">Welcome to our Blog Application</h1> -->
+   <div class="abcd">
+        <textarea [(ngModel)]="data.description" id="comment" name="comment" rows="10" cols="73" placeholder="Write Blog..."> </textarea>
+    <br>
+    <button type="button" class="btn btn-primary" (click)="post()">Save Post</button> 
+    </div>
+    <hr>
+    <div class="row ">
+        <div class="col-md-4" *ngFor="let akash of getAll" >
+        
+          <div class="card mx-auto">
+        
+            <div class="card-body">
+              <p class="card-text">{{akash.description}} </p>
+            <div class="card-footer row">
+              <button  type="submit" class="btn btn-success">Update</button>
+              <div class="pl-2">
+              <button  type="submit" class="btn btn-danger">Delete</button>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        
+        </div>
+    <!--
+    <div *ngFor let messages of postcomment>
+        <P> {{messages}}</P>
+    </div> -->
+
