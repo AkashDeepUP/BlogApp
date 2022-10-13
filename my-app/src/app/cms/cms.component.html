@@ -1,30 +1,56 @@
 <!-- <h1 style="color:white;text-align:center;">Welcome to our Blog Application</h1> -->
-   <div class="abcd">
-        <textarea [(ngModel)]="data.description" id="comment" name="comment" rows="10" cols="73" placeholder="Write Blog..."> </textarea>
-    <br>
-    <button type="button" class="btn btn-primary" (click)="post()">Save Post</button> 
-    </div>
-    <hr>
-    <div class="row ">
-        <div class="col-md-4" *ngFor="let akash of getAll" >
-        
-          <div class="card mx-auto">
-        
-            <div class="card-body">
-              <p class="card-text">{{akash.description}} </p>
-            <div class="card-footer row">
-              <button  type="submit" class="btn btn-success">Update</button>
-              <div class="pl-2">
-              <button  type="submit" class="btn btn-danger">Delete</button>
+<div class="abcd">
+  <textarea [(ngModel)]="data.description" id="comment" name="comment" rows="10" cols="73"
+    placeholder="Write Blog..."> </textarea>
+  <br>
+  <button type="button" class="btn btn-primary" (click)="post()">Save Post</button>
+</div>
+
+<hr>
+
+<div class="row ">
+  <div class="col-md-4" *ngFor="let akash of posts; let i=index">
+
+    <div class="card mx-auto ">
+
+      <div class="card-body">
+        <div class="form-group" *ngIf="akash.isEdit">
+          <input type="text" [(ngModel)]="data.description" class="form-control" />
+        </div>
+        <div *ngIf="!akash.isEdit">
+          <p class="card-text"> {{akash.description}}</p>
+        </div>
+        <!--< p class="card-text" input type="text">{{akash.description}}</p>
+        (click)="update(akash._id,akash.description)" -->
+        <div class="card-footer row">
+          <div *ngIf="akash.isEdit">
+            <div class="form-row">
+              <button (click)="update(akash._id,akash.description); akash.isEdit=false" type="submit"
+                class="btn btn-success">Update</button>
+              <div class="pl-1">
+                <button (click)="akash.isEdit=false" type="submit"
+                  class="btn btn-warning text-black  font-weight-bold">Cancel</button>
+              </div>
             </div>
-            </div>
-            </div>
+
+          </div>
+          <div *ngIf="!akash.isEdit">
+            <button (click)="akash.isEdit=true" type="submit" class="btn btn-info">Edit</button>
+          </div>
+
+
+
+          <div class="pl-2">
+            <button type="submit" class="btn btn-danger" (click)="delete(akash._id)">Delete</button>
           </div>
         </div>
-        
-        </div>
-    <!--
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--
     <div *ngFor let messages of postcomment>
         <P> {{messages}}</P>
     </div> -->
-

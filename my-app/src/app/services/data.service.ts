@@ -19,16 +19,16 @@ export class DataService {
     return this.http.get<Data[]>(baseUrl);
   }
 
-  get(id: any): Observable<Data> {
-    return this.http.get(`${baseUrl}/${id}`);
+  get(id: any): Observable<any> {
+    return this.http.get<any>(`${baseUrl}/${id}`);
   }
 
   update(id: any, data: any): Observable<any> {
-    return this.http.put(`${baseUrl}/${id}`, data);
+    return this.http.put<any>(`${baseUrl}/${id}`, data);
   }
 
   delete(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl}/${id}`);
+    return this.http.delete<any>(`${baseUrl}/${id}`);
   }
 
   deleteAll(): Observable<any> {
